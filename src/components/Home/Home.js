@@ -15,8 +15,11 @@ var HomeContainer = React.createClass({
 
 		return (
 			<div className="home-container container" style={styles}>
-				<h1>Home Page</h1>
-				<ArticleList />
+				<div className="row">
+					<div className="col-md-8">
+						<ArticleList />
+					</div>
+				</div>
 			</div>
 		);
 	}

@@ -7,15 +7,16 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 // Import views
 import HomeContainer from './components/Home/Home.js';
 import ArticleInfoContainer from './components/ArticleInfo/ArticleInfo.js';
+
 // Initialize Firebase
 var config = {
-	apiKey: "AIzaSyCKqcgTJDFTiYrzRtvEnN_1uTFWoyHXzxM",
-    authDomain: "digestible-ba926.firebaseapp.com",
-    databaseURL: "https://digestible-ba926.firebaseio.com",
-    storageBucket: "digestible-ba926.appspot.com",
-};
+      apiKey: "AIzaSyCKqcgTJDFTiYrzRtvEnN_1uTFWoyHXzxM",
+      authDomain: "digestible-ba926.firebaseapp.com",
+      databaseURL: "https://digestible-ba926.firebaseio.com",
+      storageBucket: "digestible-ba926.appspot.com",
+    };
 
-firebase.initializeApp(config);
+    firebase.initializeApp(config);
 
 // Renders entire app to the screen
 ReactDOM.render(
