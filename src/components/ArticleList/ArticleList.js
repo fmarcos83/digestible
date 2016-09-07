@@ -1,5 +1,6 @@
 var React = require('react');
-
+// Import <ArticleCard/> component
+import ArticleCard from '../ArticleCard/ArticleCard.js';
 /* 
 
 TODO: 
@@ -32,7 +33,7 @@ var ArticleList = React.createClass({
 				<ArticleCard 
 					title={article.title}
 					description={article.description}
-					author={article.author} 
+					author={article.authorName} 
 					photoURL={article.authorImage}
 					key={i} />
 				);
@@ -45,24 +46,5 @@ var ArticleList = React.createClass({
 		);
 	}
 });
-
-// Article Card 
-// <ArticleCard />
-// Displays information about the article and author
-
-var ArticleCard = React.createClass({
-	render: function () {
-		return (
-			<div className="card card-block">
-				<img className="img-circle" src={this.props.photoURL} alt="user"/>
-				<p>{this.props.author}</p>
-				<h2 className="card-title">{this.props.title}</h2>
-				<p>{this.props.description}</p>
-				<a href="#" className="card-link">Learn</a>
-			</div>
-		);
-	} 
-});
-
 
 module.exports = ArticleList;

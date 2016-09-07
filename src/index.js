@@ -7,6 +7,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 // Import views
 import HomeContainer from './components/Home/Home.js';
 import ArticleInfoContainer from './components/ArticleInfo/ArticleInfo.js';
+import QuizBuilder from './components/QuizBuilder/QuizBuilder.js';
+import Profile from './components/Profile/Profile.js';
 
 // Initialize Firebase
 var config = {
@@ -25,5 +27,7 @@ ReactDOM.render(
     		{/* Display Home component on initial load */}
     		<IndexRoute component={HomeContainer}/>
     		<Route path="/article-info" component={ArticleInfoContainer}/>
+    		<Route path="/quiz-builder" component={QuizBuilder}/>
+    		<Route path="/profile" component={Profile}/>
     	</Route>
   	</Router> , document.getElementById('root'));

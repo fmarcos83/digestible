@@ -86,8 +86,8 @@ var ArticleInfoForm = React.createClass({
 			description: this.state.description,
 			link: this.state.link,
 			tags: this.state.tags,
-			uid: user.uid,
-			author: user.displayName,
+			authorId: user.uid,
+			authorName: user.displayName,
 			authorImage: user.photoURL
 		});
 		this.setState({

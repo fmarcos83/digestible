@@ -21,14 +21,10 @@ var App = React.createClass({
     // Checks to see if a user is signed in and gets user info. 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        // If user is signed in, get the user's info. 
-        var displayName = user.displayName;
-        var email = user.email;
-        var emailVerified = user.emailVerified;
-        var photoURL = user.photoURL;
-        var isAnonymous = user.isAnonymous;
-        var uid = user.uid;
-        var providerData = user.providerData;
+        // If user is signed in, get the user's info.
+       this.setState({
+        user: user
+       });
       } else {
         // No user is signed in.
       }
@@ -41,8 +37,10 @@ var App = React.createClass({
       // Sign in with popup.
       firebase.auth().signInWithPopup(provider).then(function(result) {
         var token = result.credential.accessToken;
-        // Get signed-in user info 
-        var user = result.user;
+        // Get signed-in user info
+        this.setState({ 
+          user: result.user
+        });
         // ...
       }).catch(function(error) {
         // Handle Errors here.
