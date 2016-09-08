@@ -10,7 +10,7 @@ This array will be used for the spaced repetition algorithm that will let the us
 
 */
 
-var Answer = React.createClass({
+var AnsweredQuestions = React.createClass({
 	getInitialState: function() {
 		return {
 			answeredQuestions: []
@@ -25,4 +25,4 @@ var Answer = React.createClass({
 	}
 });
 
-module.exports = Answer;
+module.exports = AnsweredQuestions;
