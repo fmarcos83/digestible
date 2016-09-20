@@ -1,25 +1,11 @@
 var React = require('react');
 
-// Answer Component 
-// <Answer />
-// Allows user to input possible answers to the <Question /> component 
-
 var Answer = React.createClass({
-	getInitialState: function() {
-		return {
-			answerText: "",
-			isRightAnswer: false
-		}
-	},
 	handleAnswerTextChange: function(event) {
-		this.setState({answerText: event.target.value})
+		this.props.answerUpdate(this.props.id, {id: this.props.id, text: event.target.value, questionId:this.props.questionId});
 	},
-	selectAnswer: function() {
-		// Toggles this.state.isRightAnswer between true and false
-		var isRightAnswer = this.state.isRightAnswer;
-		this.setState({
-			isRightAnswer: !isRightAnswer
-		})
+	selectAnswer: function(event) {
+		this.props.answerUpdate(this.props.id, {id: this.props.id, answered: event.target.checked, questionId: this.props.questionId});
 	},
 	render: function () {
 	    return (

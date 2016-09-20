@@ -67,6 +67,9 @@ var App = React.createClass({
               <Link to="/article-info" className="nav-link" href="#">Create Quiz</Link>
             </li>
             <li className="nav-item">
+              <Link to="/quiz-builder" className="nav-link" href="#">Quiz Builder</Link>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="#" onClick={this.toggleSignIn}>Sign In / Sign Up</a>
             </li>
           </ul>

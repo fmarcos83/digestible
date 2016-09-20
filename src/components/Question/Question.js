@@ -1,32 +1,30 @@
 var React = require('react');
 // Import Answer component 
-import Answer from '../../components/Answer/Answer.js';
+import Answer from '../../behaviour/Answer/Answer.js';
 
 // Question Component 
 // <Question />
 // Includes an input for the question text and renders two <Answer /> components as well. 
 
 // Use index as key
-var index = 0;
 var Question = React.createClass({
 	getInitialState: function() {
 		// Set this.state.answers to empty array. This will hold answer options.
 		// this.state.questionText set to an empty string.  
 		return {
 			answers: [],
-			questionText: ""
+			text: ""
 		}
 	},
 	handleQuestionTextChange: function(event) {
 		// Update this.state.questionText on user input.
-		this.setState({questionText: event.target.value})
+		this.props.questionUpdate({id: this.props.id, text: event.target.value})
 	},
 	addAnswer: function() {
 		// Push Answer components to this.state.answers
 		var answers = this.state.answers;
-		answers.push(<Answer key={index}/>);
+		answers.push(<Answer key={answers.length} id={answers.length} questionId={this.props.id} />);
 		this.setState({ answers: answers });
-		index++;
 	},
 	componentDidMount: function () {
 		// Render two answer inputs initially on page load. 

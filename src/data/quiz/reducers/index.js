@@ -1,50 +1,53 @@
-quizActions = require "../actions"
-intialState = {
-    quizs:[],
-    questions:[],
-    answers: []
-}
+import quizActions from "../actions"
+import {Map, List, fromJS} from "immutable"
+
+let initialState = Map({"questions":new List()});
+
 //quizs
-fetchQuizs = function(action, state){
-    _.assign({}, state, ) 
+let fetchQuizs = function(action, state){
 }
-fetchQuiz = function(action, state){
+let fetchQuiz = function(action, state){
 
 }
-addQuiz = function(action, state){
+let addQuiz = function(action, state){
 
 }
-removeQuiz = function(action, state){
+let removeQuiz = function(action, state){
 
 }
 //questions
-fetchQuestions = function(action, state){
+let questionId = 0
+let fetchQuestions = function(action, state){
 
 }
-fetchQuestion = function(action, state){
+let fetchQuestion = function(action, state){
 
 }
-addQuestion = function(action, state){
+let removeQuestion = function(action, state){
 
 }
-removeQuestion = function(action, state){
-
+let updateQuestion = function(action, state){
+    state = state.updateIn(["questions", action.id], new Map(), (data)=>{ return data.mergeDeep(action.data); });
+    console.log('object', state.toJS());
+    return state;
 }
 //answers
-fetchAnswers = function(action, state){
+let fetchAnswers = function(action, state){
 
 }
-fetchAnswer = function(action, state){
+let fetchAnswer = function(action, state){
 
 }
-addAnswer = function(action, state){
+let updateAnswer = function(action, state){
+    state = state.updateIn(["questions",action.data.questionId,"answers",action.data.id], new Map(), (data)=>{ return data.mergeDeep(action.data);});
+    console.log("answer", state.toJS());
+    return state;
+}
+let removeAnswer = function(action, state){
 
 }
-removeAnswer = function(action, state){
 
-}
-
-reducerConfig = function(state, action){
+let reducerConfig = function(state, action){
     state = state || initialState;
     switch(true){
         //QUIZS
@@ -67,11 +70,11 @@ reducerConfig = function(state, action){
         case action.type === quizActions.FETCH_QUESTIONS:
             state = fetchQuestions(action, state);
             break;
-        case action.type === quizActions.CREATE_QUESTION:
-            state = addQuestion(action, state);
-            break;
         case action.type === quizActions.DELETE_QUESTION:
             state = removeQuestion(action, state);
+            break;
+        case action.type === quizActions.UPDATE_QUESTION:
+            state = updateQuestion(action, state);
             break;
         //ANSWERS
         case action.type === quizActions.FETCH_ANSWER:
@@ -80,8 +83,8 @@ reducerConfig = function(state, action){
         case action.type === quizActions.FETCH_ANSWERS:
             state = fetchAnswers(action, state);
             break;
-        case action.type === quizActions.CREATE_ANSWER:
-            state = addAnswer(action, state);
+        case action.type === quizActions.UPDATE_ANSWER:
+            state = updateAnswer(action, state);
             break;
         case action.type === quizActions.DELETE_ANSWER:
             state = removeAnswer(action, state);

@@ -1,4 +1,4 @@
-actionConfig = {
+let actionConfig = {
     //QUIZS
     //plural
     FETCH_QUIZS: "FETCH_QUIZS",
@@ -38,21 +38,24 @@ actionConfig = {
     },
     //singular
     FETCH_QUESTION: "FETCH_QUESTION",
-    CREATE_QUESTION: "CREATE_QUESTION",
     DELETE_QUESTION: "DELETE_QUESTION",
+    UPDATE_QUESTION: "UPDATE_QUESTION",
     fetchQuestion: function(){
         return {
             type: actionConfig.FETCH_QUESTION 
         }
     },
-    createQuestion: function(){
+    deleteQuestion: function(id){
         return {
-            type: actionConfig.CREATE_QUESTION 
+            type: actionConfig.DELETE_QUESTION,
+            id: id
         }
     },
-    deleteQuestion: function(){
+    updateQuestion: function(id, data){
         return {
-            type: actionConfig.DELETE_QUESTION 
+            type: actionConfig.UPDATE_QUESTION,
+            id: id,
+            data: data
         }
     },
     
@@ -66,22 +69,25 @@ actionConfig = {
     },
     //singular
     FETCH_ANSWER: "FETCH_ANSWER",
-    CREATE_ANSWER: "CREATE_ANSWER",
     DELETE_ANSWER: "DELETE_ANSWER",
+    UPDATE_ANSWER: "UPDATE_ANSWER",
     fetchAnswer: function(){
        return {
            type: actionConfig.FETCH_ANSWER
        } 
     },
-    createAnswer: function(){
+    deleteAnswer: function(id){
        return {
-           type: actionConfig.CREATE_ANSWER
+           type: actionConfig.DELETE_ANSWER,
+           id: id
        } 
     },
-    deleteAnswer: function(){
-       return {
-           type: actionConfig.DELETE_ANSWER
-       } 
+    updateAnswer: function(id, data){
+        return {
+            type: actionConfig.UPDATE_ANSWER,
+            id: id,
+            data: data
+        }
     }
 }
 module.exports = actionConfig 
