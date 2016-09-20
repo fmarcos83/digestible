@@ -1,11 +1,23 @@
 var React = require('react');
 import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
+import logger from "../../data/quiz/middlewares/middlewares";
 import quizApp from "../../data/quiz/reducers";
 // Import Question component 
 import Question from '../../behaviour/Question/Question.js';
 
-let store = createStore(quizApp)
+var config = {
+  apiKey: "AIzaSyCKqcgTJDFTiYrzRtvEnN_1uTFWoyHXzxM",
+  authDomain: "digestible-ba926.firebaseapp.com",
+  databaseURL: "https://digestible-ba926.firebaseio.com",
+  storageBucket: "digestible-ba926.appspot.com",
+};
+
+const store = createStore(
+	quizApp,
+	applyMiddleware(logger)
+);
+
 
 // TODO: Correctly push data to Firebase 
 var index = 0;
@@ -22,7 +34,9 @@ var QuizBuilder = React.createClass({
 	    this.setState({questions: questions});
 	},
 	onSubmit: function (event) {
-		// TODO: Firebase code here
+		event.preventDefault();
+		event.stopPropagation();
+		
 	},
 	componentDidMount: function () {
 		// Renders one Question component on initial page load. 
