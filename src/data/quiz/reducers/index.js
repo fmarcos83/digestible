@@ -47,6 +47,16 @@ let removeAnswer = function(action, state){
 
 }
 
+let syncQuiz = function(action, state){
+    console.log('action', action);
+    console.log('question', state);
+    return state;
+}
+
+let fetchData = function(action, state){
+    return state;
+}
+
 let reducerConfig = function(state, action){
     state = state || initialState;
     switch(true){
@@ -88,6 +98,12 @@ let reducerConfig = function(state, action){
             break;
         case action.type === quizActions.DELETE_ANSWER:
             state = removeAnswer(action, state);
+            break;
+        case action.type === quizActions.SYNC_QUIZ:
+            state = syncQuiz(action, state);
+            break;
+        case action.type === quizActions.FETCH_DATA:
+            state = fetchData(action, state);
             break;
         default:
     }

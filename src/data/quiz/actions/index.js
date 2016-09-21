@@ -88,6 +88,21 @@ let actionConfig = {
             id: id,
             data: data
         }
+    },
+    //FIREBASE INTERACTION
+    SYNC_QUIZ:'SYNC_QUIZ',
+    FETCH_DATA: 'FETCH_DATA',
+    fetchData: function(){
+        return {
+            type: actionConfig.FETCH_DATA
+        }    
+    },
+    syncQuiz: function(data){
+        console.log('DATA', data);
+        return {
+            type: actionConfig.SYNC_QUIZ,
+            promise: firebase.database().ref('quiz').push(data)
+        }
     }
 }
 module.exports = actionConfig 

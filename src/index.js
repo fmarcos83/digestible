@@ -7,7 +7,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 // Import views
 import HomeContainer from './components/Home/Home.js';
 import ArticleInfoContainer from './components/ArticleInfo/ArticleInfo.js';
-import QuizBuilder from './components/QuizBuilder/QuizBuilder.js';
+import QuizBuilder from './components/QuizBuilder/QuizBuilderWrapper.js';
 import Profile from './components/Profile/Profile.js';
 
 // Initialize Firebase
